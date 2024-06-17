@@ -1,0 +1,20 @@
+.topRow {
+  background-color: navy;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  margin: 2px;
+}
+
+.bodyLarge {
+  background-color: lightgray;
+}
+
+.leftPanel {
+  background-color: paleturquoise;
+}
+
+
+.rightPanel {
+  background-color: palegoldenrod;
+}
