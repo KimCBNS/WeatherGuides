@@ -4,43 +4,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Weather Application Kim Desveaux</title>
   <!-- bootstrap connections -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
   <!-- custom css -->
   <link rel="stylesheet" href="Assets\style.css">
 </head>
 
 <body>
-  <div class="row topRow">Weather Dashboard</div>
-  <br>
+  <div class="row topRow">
+    <div class="col-12 d-flex justify-content-center">Weather Dashboard</div>
+  </div>
+
 
   <div class="row bodylarge">
-    <div class="col-6 col-md-4 leftPanel">Left Panel
-    <!-- left panel search bar -->
-    <div class="search-box">
-      <h4>Search for a city:</h4>
-      <input type="text" id="city" placeholder="Search for a city">
 
-      <button class="notranslate" id="search">Search</button>
-      <br>
+    <!-- left panel search bar -->
+     <!-- placeholder for the city search -->
+    <div class="col-12 col-md-3 col-lg-3 leftPanel">
+      <div class="row search-box">
+        <div class="col p-3 m-3 bg-info text-white">
+          <h4>Search for a city:</h4>
+          <div>
+          <input class="form-control input-lg" type="text" id="city" placeholder="Search for a city"></div>
+         <div><button type="button" class="btn btn-primary btn-block mt-2 mb-1">Search</button></div>
+        </div>
+      </div>
+<!-- placeholder for the list of cities searched -->
+      <div class="row history">
+        <div class="col p-3 m-3 bg-light text-dark">
+          <h4>History list:</h4>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
 
+    <!-- full panel displaying results -->
+    <div class="col-12 col-md-9 col-lg-9 bg-light text-dark rightPanel">
+
+      <div class="row">
+        <div class="col card-deck">
+          <!-- design a card layout to help prep for data needed -->
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title">City Name: <span name="cityOne">Sydney</span></p>
+              <img class="card-img-top" src="..." alt="Weather Icon"> <span name="iconOne">Icon</span>
+              <p class="card-date">Date: <span name="dateOne">Sunday</span></p>
+              <p class="card-temp">Temperature: <span name="tempOne">12</span></p>
+              <p class="card-humid">Humidity: <span name="humidityOne">12</span></p>
+              <p class="card-wind">Wind Speed: <span name="windOne">12</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div class="row">
+  <div class="col">5 Day Forecast: </div>
 </div>
 
-    <div class="col-12 col-md-8 rightPanel">Center stuff</div>
+      <div class="row">
+        <div class="col card-deck">
+
+          <div class="card bg-dark text-white">
+            <div class="card-body">
+              <p class="card-title">City Name: <span name="city">Sydney</span></p>
+              <img class="card-img-top" src="..." alt="Weather Icon"> <span name="icon">Icon</span>
+              <p class="card-date">Date: <span name="date">Sunday</span></p>
+              <p class="card-temp">Temperature: <span name="temp">12</span></p>
+              <p class="card-humid">Humidity: <span name="humidity">12</span></p>
+              <p class="card-wind">Wind Speed: <span name="wind">12</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
+
+
+
+
+
+
+
+
   <!-- bootstrap javascript tags -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
   <!-- custom javascript -->
   <script src="Assets\index.js"></script>
 </body>

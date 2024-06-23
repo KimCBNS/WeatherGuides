@@ -1,4 +1,5 @@
 
+// hint: https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 
 let weatherAPIkey = "55ea4734bbe6ae3cc1f9934a5e2e7775";
