@@ -4,6 +4,19 @@
 let weatherAPIkey = "55ea4734bbe6ae3cc1f9934a5e2e7775";
 let city = "Halifax";
 
+// get the placeholders to put the current forecast and city
+// where to put the items
+const cityOneEl = $("#cityOne");
+const imgOneEl = $("#imgOne");
+const dateOneEl = $("#dateOne");
+const tempOneEl = $("#tempOne");
+const humidityOneEl = $("#humidityOne");
+const windOneEl = $("#windOne");
+
+
+
+
+
 
 fetchWeather(city);
 
@@ -14,18 +27,25 @@ function fetchWeather(city) {
 
   fetch(apiUrlWeather).then(response => {
     console.log(response);
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("City does not exist")
     } else {
       return response.json()
     }
-    
+
   }).then(data => {
     console.log(data);
+    dateOneEl.text(dayjs().format("MM/DD/YYYY"));
+    cityOneEl.text(data.name);
 
-    // const iconEl = document.createElement("img");
-    // iconEl.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-    // document.querySelector(".rightPanel").append(iconEl);
+    let imgOneIcon = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+    console.log(imgOneIcon);
+    imgOneEl.attr('src', imgOneIcon);
+    // style it here
+
+    tempOneEl.text(data.main.temp);
+    humidityOneEl.text(data.main.humidity);
+    windOneEl.text(data.wind.speed);
 
 
     const { lat, lon } = data.coord
@@ -33,6 +53,16 @@ function fetchWeather(city) {
 
     fetch(apiUrlForecast).then(response => response.json()).then(data => {
       console.log(data);
+      // should I double check that it is halifax ??? city.name
+
+      //humidity
+      console.log(data.list[0].main.humidity);
+      // temp
+      console.log(data.list[0].main.temp);
+      // wind
+      console.log(data.list[0].wind.speed);
+
+
     })
   }).catch(error => {
     console.log(error.message);

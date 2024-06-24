@@ -18,3 +18,11 @@
 .rightPanel {
   background-color: palegoldenrod;
 }
+
+img {
+  width: 3px;
+}
+
+.card-img-top {
+  width: 25px;
+}
