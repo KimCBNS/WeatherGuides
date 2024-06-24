@@ -15,12 +15,12 @@ function fetchWeather(city) {
 
   fetch(apiUrlWeather).then(response => {
     console.log(response);
-    if(!response.ok){
+    if (!response.ok) {
       throw new Error("City does not exist")
     } else {
       return response.json()
     }
-    
+
   }).then(data => {
     console.log(data);
 
@@ -48,3 +48,84 @@ function fetchWeather(city) {
 
 
 //const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`; (for the weather icons)
+
+// <!-- <div class="card bg-dark text-white">
+// <div class="card-body">
+//  
+//   <img class="card-img-top" src="" alt="Weather Icon"> <span name="icon">Icon</span>
+//   <p class="card-date">Date: <span name="date">Sunday</span></p>
+//   <p class="card-temp">Temperature: <span name="temp">12</span></p>
+//   <p class="card-humid">Humidity: <span name="humidity">12</span></p>
+//   <p class="card-wind">Wind Speed: <span name="wind">12</span></p>
+// </div> -->
+// <!--             
+// // </div> -->const i = 0;
+
+//   // //humidity
+//   console.log(fiveDayData[i].main.humidity);
+
+//   // temp
+//   console.log(fiveDayData[i].main.temp);
+//   // wind
+//   console.log(fiveDayData[i].wind.speed);
+//   // icon
+//   console.log(fiveDayData[i].weather[0].icon);
+
+function createWeatherCards(fiveDayData) {
+  console.log(fiveDayData);
+  // get the card holder to store the new card
+  const cardHolder = $(".card-deck");
+ // clear the cards to start
+  cardHolder.empty();
+
+
+ // create each card
+ for (let i = 0; i < 5; i++) {
+  let card = $('<div>');
+  card.attr("class", 'card');
+
+  // create the card-body and give it a class card-body
+  let cardBody = $('<div>');
+  cardBody.attr("class", 'cardBody');
+
+  // Card Date
+  let cardDate = $('<p>');
+  cardDate.attr("class", 'card-date');
+  const futureDay = dayjs.unix(fiveDayData[i].dt).format("MM/DD/YYYY (hh:mm a ZZ)");
+  cardDate.text(futureDay);
+
+ // Card Icon
+ let cardIcon = $('<img>');
+ cardIcon.attr("class", 'card-icon');
+ let imgIcon = `https://openweathermap.org/img/w/${fiveDayData[i].weather[0].icon}.png`;
+ cardIcon.attr('src', imgIcon);
+ cardIcon.attr('alt', "weather icon");
+
+ // Card Temp
+ let cardTemp= $('<p>');
+ cardTemp.attr("class", 'card-temp');
+ cardTemp.text(fiveDayData[i].main.temp);
+
+// Card Humidity
+let cardHumid = $('<p>');
+cardHumid.attr("class", 'card-humidity');
+cardHumid.text(fiveDayData[i].main.humidity);
+
+// Card Wind Speed
+let cardWind = $('<p>');
+cardWind.attr("class", 'card-wind');
+cardWind.text(fiveDayData[i].wind.speed);
+    //card.attr('style', 'width:80; align-items: center; background-color: lightgrey; margin: 3px');
+  
+
+  // put it all together and build the card
+  cardBody.append(cardDate)
+  cardBody.append(cardIcon);
+  cardBody.append(cardTemp);
+  cardBody.append(cardHumid);
+  cardBody.append(cardWind);
+  card.append(cardBody);
+  
+ }
+return;
+}

@@ -22,25 +22,24 @@
   <div class="row bodylarge">
 
     <!-- left panel search bar -->
-     <!-- placeholder for the city search -->
+    <!-- placeholder for the city search -->
     <div class="col-12 col-md-3 col-lg-3 leftPanel">
       <div class="row search-box">
         <div class="col p-3 m-3 bg-info text-white">
           <h4>Search for a city:</h4>
           <div>
-          <input class="form-control input-lg" type="text" id="city" placeholder="Search for a city"></div>
-         <div><button type="button" class="btn btn-primary btn-block mt-2 mb-1">Search</button></div>
+            <input class="form-control input-lg" type="text" id="city" placeholder="Search for a city">
+          </div>
+          <div><button type="button" class="btn btn-primary btn-block mt-2 mb-1" id="search">Search</button></div>
         </div>
       </div>
-<!-- placeholder for the list of cities searched -->
+      <!-- placeholder for the list of cities searched -->
       <div class="row history">
         <div class="col p-3 m-3 bg-light text-dark">
           <h4>History list:</h4>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-          </ul>
+          <div id="searched">
+
+          </div>
         </div>
       </div>
 
@@ -50,39 +49,30 @@
     <div class="col-12 col-md-9 col-lg-9 bg-light text-dark rightPanel">
 
       <div class="row">
-        <div class="col card-deck">
+        <div class="col card-deck1">
           <!-- design a card layout to help prep for data needed -->
           <div class="card">
-            <div class="card-body">
-              <p class="card-date">Date: <span id="dateOne"></span></p>
-              <p class="card-title">City Name: <span id="cityOne"></span></p>
-              <img class="card-img-top" id="imgOne" src="" alt="Weather Icon"> 
+            <div class="card-body1">
+              <p class="card-date1">Date: <span id="dateOne"></span></p>
+              <p class="card-title1">City Name: <span id="cityOne"></span></p>
+              <img class="card-img-top1" id="imgOne1" src="" alt="Weather Icon">
               
-              <p class="card-temp">Temperature: <span id="tempOne"></span>  &#176F</p>
-              <p class="card-humid">Humidity: <span id="humidityOne"></span> %</p>
-              <p class="card-wind">Wind Speed: <span id="windOne"></span> MPH</p>
+              <p class="card-temp1">Temperature: <span id="tempOne"></span> &#176F</p>
+              <p class="card-humid1">Humidity: <span id="humidityOne"></span> %</p>
+              <p class="card-wind1">Wind Speed: <span id="windOne"></span> MPH</p>
             </div>
           </div>
         </div>
       </div>
 
-<div class="row">
-  <div class="col">5 Day Forecast: </div>
-</div>
+      <div class="row">
+        <div class="col">5 Day Forecast: </div>
+      </div>
 
       <div class="row">
         <div class="col card-deck">
 
-          <div class="card bg-dark text-white">
-            <div class="card-body">
-              <p class="card-title">City Name: <span name="city">Sydney</span></p>
-              <img class="card-img-top" src="" alt="Weather Icon"> <span name="icon">Icon</span>
-              <p class="card-date">Date: <span name="date">Sunday</span></p>
-              <p class="card-temp">Temperature: <span name="temp">12</span></p>
-              <p class="card-humid">Humidity: <span name="humidity">12</span></p>
-              <p class="card-wind">Wind Speed: <span name="wind">12</span></p>
-            </div>
-          </div>
+        
         </div>
       </div>
     </div>
