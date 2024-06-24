@@ -148,6 +148,7 @@ cardWind.text(fiveDayData[i].wind.speed);
   cardBody.append(cardHumid);
   cardBody.append(cardWind);
   card.append(cardBody);
+  cardHolder.append(card);
   
  }
 return;
@@ -198,6 +199,7 @@ function fetchWeather(city) {
     console.log(error.message);
 
   })
+
 
 
   //then call display current weather (send to this ) after this
