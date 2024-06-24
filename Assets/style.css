@@ -1,9 +1,26 @@
 .topRow {
-  background-color: navy;
-  color: white;
-  font-size: 36px;
+  font-size: 30px;
   text-align: center;
   margin: 2px;
+
+}
+
+#sear {
+  background-color: #0a0118;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.infoBar {
+  background-color: paleturquoise;
+}
+
+.card-body1 {
+  background-color: lightgray;
+  font-size: medium;
+  font-weight: bold;
+  padding: 15px;
 }
 
 .bodyLarge {
@@ -16,13 +33,20 @@
 
 
 .rightPanel {
-  background-color: palegoldenrod;
+  background-color: paleturquoise;
 }
 
-img {
-  width: 3px;
-}
 
 .card-img-top1 {
-  width: 25px;
+  width: 40px;
+  margin: 10px;
+}
+
+.card-icon {
+  width: 40px;
+  margin: 10px;
+}
+
+p {
+  font-size: medium;
 }

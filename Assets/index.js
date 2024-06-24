@@ -1,4 +1,3 @@
-
 // open weather api key
 let weatherAPIkey = "55ea4734bbe6ae3cc1f9934a5e2e7775";
 
@@ -8,14 +7,10 @@ let existingCities = [];
 const searchBtn = $("#search");
 const searchEl = $("#city")
 
-
 // get the placeholders to put the current forecast and city
 // where to put the items
 const cityOneEl = $("#cityOne");
-const imgOneEl = $("#imgOne1");
-
-
-
+const imgHolderEl = $("#img-holder");
 
 const dateOneEl = $("#dateOne");
 const tempOneEl = $("#tempOne");
@@ -61,6 +56,7 @@ function historyUpdates(correctCityName) {
       existingCities.push(correctCityName);
       localStorage.setItem('cities', JSON.stringify(existingCities));
       // TODO: update the display list of searched city histories
+      createHistory();
     }
   } else {
     // if it is empty this sets the first city to the local storage
@@ -77,6 +73,7 @@ function createHistory() {
   if ((existingCities !== null) || (existingCities !== 'undefined')) {
     // get the location to build the list
     const citiesSearched = $('#searched')
+    citiesSearched.empty();
     // create a button element for each name in the list
     for (let i = 0; i < existingCities.length; i++) {
       let cityAdd = $('<button>');
@@ -103,10 +100,10 @@ function createWeatherCards(fiveDayData) {
 
 
  // create each card
- for (let i = 0; i < 5; i++) {
+ for (let i = 0; i < 40; i+=8) {
   let card = $('<div>');
   card.attr("class", 'card');
-
+  card.attr('style', 'background-color: lightblue; margin-left: 5px padding-left: 2px;');
   // create the card-body and give it a class card-body
   let cardBody = $('<div>');
   cardBody.attr("class", 'cardBody');
@@ -114,35 +111,44 @@ function createWeatherCards(fiveDayData) {
   // Card Date
   let cardDate = $('<p>');
   cardDate.attr("class", 'card-date');
-  const futureDay = dayjs.unix(fiveDayData[i].dt).format("MM/DD/YYYY (hh:mm a ZZ)");
-  cardDate.text(futureDay);
+  const futureDay = dayjs.unix(fiveDayData[i].dt).format("MM/DD/YYYY");
+  cardDate.text(`Forecast Date: ${futureDay}`);
+
+  let cardTime = $('<p>');
+  cardTime.attr("class", 'card-time');
+  const futureTime = dayjs.unix(fiveDayData[i].dt).format("hh:mm a ZZ");
+  cardTime.text(`Forecast Time: ${futureTime}`);
+    
+  
 
  // Card Icon
  let cardIcon = $('<img>');
  cardIcon.attr("class", 'card-icon');
  let imgIcon = `https://openweathermap.org/img/w/${fiveDayData[i].weather[0].icon}.png`;
+ console.log('imgIcon')
  cardIcon.attr('src', imgIcon);
  cardIcon.attr('alt', "weather icon");
 
  // Card Temp
  let cardTemp= $('<p>');
  cardTemp.attr("class", 'card-temp');
- cardTemp.text(fiveDayData[i].main.temp);
+ cardTemp.text(`Temp: ${fiveDayData[i].main.temp}F`);
 
 // Card Humidity
 let cardHumid = $('<p>');
 cardHumid.attr("class", 'card-humidity');
-cardHumid.text(fiveDayData[i].main.humidity);
+cardHumid.text(`Humidity: ${fiveDayData[i].main.humidity}%`);
 
 // Card Wind Speed
 let cardWind = $('<p>');
 cardWind.attr("class", 'card-wind');
-cardWind.text(fiveDayData[i].wind.speed);
-    //card.attr('style', 'width:80; align-items: center; background-color: lightgrey; margin: 3px');
+cardWind.text(`Wind Speed: ${fiveDayData[i].wind.speed} MPH`);
+    
   
 
   // put it all together and build the card
-  cardBody.append(cardDate)
+  cardBody.append(cardDate);
+  cardBody.append(cardTime);
   cardBody.append(cardIcon);
   cardBody.append(cardTemp);
   cardBody.append(cardHumid);
@@ -174,15 +180,22 @@ function fetchWeather(city) {
     // use correct city spelling
     cityOneEl.text(data.name);
     // add the weather icon
+    imgOneEl = $("<img>");
+    imgOneEl.attr("class", "card-img-top1");
+    imgOneEl.attr("id", "imgOne1")
+    imgOneEl.attr("alt", "Weather Icon")
     let imgOneIcon = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
     imgOneEl.attr('src', imgOneIcon);
+    imgHolderEl.empty();
+    imgHolderEl.append(imgOneEl);
+    
     // add the temp, humidity and wind speed
     tempOneEl.text(data.main.temp);
     humidityOneEl.text(data.main.humidity);
     windOneEl.text(data.wind.speed);
     // send the city name to be stored as a search history item
     historyUpdates(data.name);
-
+    
     // get the latitude and longitude coordinates and call the 5 day forecast with them
     const { lat, lon } = data.coord
     const apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherAPIkey}`;
